@@ -1,27 +1,39 @@
 # 🔗 Simple URL Shortener
 
-A simple URL Shortener backend application built with **Node.js, Express.js, and MongoDB**. It converts long URLs into short, unique links and redirects users to the original URL when the short link is accessed.
+A simple and responsive URL Shortener application built with **Node.js, Express.js, MongoDB, HTML, CSS, and JavaScript**.
+
+This project converts long URLs into short, unique links. When users open a shortened URL, they are automatically redirected to the original website.
 
 ## ✨ Features
 
-- Create short URLs from long URLs.
+- Convert long URLs into short URLs.
 - Generate unique short codes automatically.
-- Store original URLs and short codes in MongoDB.
-- Redirect users to the original URL using the short URL.
+- Store URL mappings in MongoDB.
+- Redirect short URLs to their original destinations.
+- Simple and user-friendly frontend.
+- Copy shortened URLs with one click.
 - Validate URL formats.
 - Accept only HTTP and HTTPS URLs.
 - Handle missing URLs and invalid short codes.
-- Return appropriate error responses.
+- Display success and error messages.
 
 ## 🛠️ Technologies Used
 
-- **Node.js** — JavaScript runtime
-- **Express.js** — Backend web framework
-- **MongoDB** — NoSQL database
-- **Mongoose** — MongoDB object modeling
-- **dotenv** — Environment variable management
-- **Nodemon** — Development server utility
-- **Postman** — API testing
+**Backend**
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- dotenv
+- Nodemon
+
+**Frontend**
+- HTML5
+- CSS3
+- JavaScript
+
+**API Testing**
+- Postman
 
 ## 📁 Project Structure
 
@@ -31,11 +43,13 @@ url-shortener/
 │   └── Url.js
 ├── routes/
 │   └── urlRoutes.js
-├── node_modules/
+├── public/
+│   └── index.html
 ├── .env
 ├── .gitignore
 ├── package.json
 ├── package-lock.json
+├── README.md
 └── server.js
 ```
 
@@ -47,7 +61,7 @@ url-shortener/
 git clone YOUR_GITHUB_REPOSITORY_URL
 ```
 
-### 2. Navigate to the project directory
+### 2. Navigate to the project folder
 
 ```bash
 cd url-shortener
@@ -61,7 +75,7 @@ npm install
 
 ### 4. Configure environment variables
 
-Create a `.env` file in the root directory and add:
+Create a `.env` file in the root directory:
 
 ```env
 PORT=5000
@@ -69,30 +83,37 @@ MONGO_URI=mongodb://127.0.0.1:27017/url_shortener
 BASE_URL=http://localhost:5000
 ```
 
-Make sure MongoDB is installed and running on your computer.
+Make sure MongoDB is installed and running.
 
-### 5. Start the development server
+### 5. Start the application
 
 ```bash
 npm run dev
 ```
 
-The server will run at:
+The server will start at:
 
-`http://localhost:5000`
+**http://localhost:5000**
 
-## 🚀 API Endpoints
+Open this address in your browser to use the URL Shortener application.
+
+## 🚀 How to Use
+
+1. Open the application in your browser.
+2. Enter a long URL, such as `https://www.google.com`.
+3. Click the **Shorten URL** button.
+4. Your shortened URL will appear on the screen.
+5. Click **Copy Short URL** to copy the generated link.
+6. Open the short URL to visit the original website.
+
+## 🔌 API Endpoints
 
 ### 1. Check Server Status
 
 - **Method:** `GET`
 - **Endpoint:** `/`
 
-Example:
-
-```text
-http://localhost:5000/
-```
+Returns a message confirming that the API is running.
 
 ### 2. Create a Short URL
 
@@ -119,7 +140,7 @@ Example successful response:
 }
 ```
 
-The short code will be generated automatically and may differ for each URL.
+The generated short code will differ for each newly created URL.
 
 ### 3. Redirect to the Original URL
 
@@ -132,42 +153,46 @@ Example:
 http://localhost:5000/35aa3468
 ```
 
-Accessing this short URL redirects the user to the original website.
+Accessing the short URL redirects the user to the original website.
 
 ## ❌ Error Handling
 
-The API handles the following cases:
+The application handles the following errors:
 
-| Situation | Expected response |
-|---|---|
-| Original URL is missing | `400 Bad Request` |
-| Invalid URL format | `400 Bad Request` |
-| URL uses an unsupported protocol | `400 Bad Request` |
-| Short code does not exist | `404 Not Found` |
-| Unexpected server error | `500 Internal Server Error` |
+| Situation | HTTP Status |
+|---|---:|
+| Original URL is missing | 400 |
+| Invalid URL format | 400 |
+| Unsupported URL protocol | 400 |
+| Short code not found | 404 |
+| Unexpected server error | 500 |
 
 ## 🧪 Testing
 
-The API endpoints were tested using **Postman**.
+The backend API was tested using Postman, and the frontend was tested in a web browser.
 
 Tests include:
 
-- Successfully creating a short URL.
-- Redirecting to the original URL.
+- Creating a short URL successfully.
+- Redirecting to the original website.
 - Handling invalid short codes.
 - Rejecting missing or invalid URLs.
-- Rejecting protocols other than HTTP and HTTPS.
+- Rejecting unsupported protocols.
+- Creating a short URL through the frontend.
+- Copying the generated short URL.
 
-## 🔒 Environment Variables
+## 🔒 Environment Variables and Security
 
-The `.env` file contains local configuration and must not be committed to GitHub. It is excluded through `.gitignore`.
+- The `.env` file contains local configuration and should not be committed to GitHub.
+- The `node_modules/` directory should be excluded from version control.
+- The `.gitignore` file is used to prevent these files from being uploaded.
 
-## 📌 Future Improvements
+## 💡 Future Improvements
 
-- Build a simple frontend to enter long URLs and display short links.
-- Add click tracking and URL analytics.
+- Track the number of clicks on each short URL.
 - Add URL expiration functionality.
 - Create a dashboard to manage shortened URLs.
+- Deploy the application online.
 
 ## 👩‍💻 Author
 
@@ -177,4 +202,4 @@ GitHub: [tanjila-akter04](https://github.com/tanjila-akter04)
 
 ---
 
-*This project was developed as a backend development assignment to practice REST API development, database integration, URL validation, and HTTP redirects.*
+*This project was developed as a backend development assignment with an optional frontend to practice REST API development, database integration, URL validation, and HTTP redirects.*
